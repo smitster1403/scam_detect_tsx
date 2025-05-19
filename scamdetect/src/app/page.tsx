@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 export default function Home() {
   return (
@@ -95,8 +95,11 @@ export default function Home() {
   );
 }
 
-// Placeholder for feature icons
-const IconShield = (props) => (
+// Add type definition for SVG component props
+type IconProps = React.SVGProps<SVGSVGElement>;
+
+// Placeholder for feature icons with proper type annotations
+const IconShield = (props: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -113,7 +116,7 @@ const IconShield = (props) => (
   </svg>
 );
 
-const IconBell = (props) => (
+const IconBell = (props: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -130,7 +133,7 @@ const IconBell = (props) => (
   </svg>
 );
 
-const IconDatabase = (props) => (
+const IconDatabase = (props: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -147,7 +150,7 @@ const IconDatabase = (props) => (
   </svg>
 );
 
-const IconUpload = (props) => (
+const IconUpload = (props: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -164,7 +167,7 @@ const IconUpload = (props) => (
   </svg>
 );
 
-const IconSearch = (props) => (
+const IconSearch = (props: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -181,7 +184,7 @@ const IconSearch = (props) => (
   </svg>
 );
 
-const IconOffice = (props) => (
+const IconOffice = (props: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import DashboardLayout from "@/components/layouts/DashboardLayout";
-import { scamTypes, recentActivity, recentAlerts } from "@/lib/data";
+import { recentActivity, recentAlerts } from "@/lib/data";
 
 export default function Database() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -19,7 +19,8 @@ export default function Database() {
       severity: item.severity,
       description: item.description,
       reportedBy: item.user,
-      hasEvidence: item.hasFiles
+      hasEvidence: item.hasFiles,
+      location: "" // Add empty location property to match the type
     })),
     ...recentAlerts.map(alert => ({
       id: alert.id,
@@ -137,7 +138,7 @@ export default function Database() {
                         <span>Reported by: {item.reportedBy}</span>
                         <span className="mx-2">•</span>
                         <span>{item.date}</span>
-                        {item.location && (
+                        {item.location && item.location.trim() !== "" && (
                           <>
                             <span className="mx-2">•</span>
                             <span>Location: {item.location}</span>

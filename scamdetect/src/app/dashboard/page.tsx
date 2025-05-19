@@ -12,7 +12,7 @@ export default function Dashboard() {
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">Dashboard</h1>
           <p className="text-gray-600 dark:text-gray-300">
-            Welcome back. Here's an overview of recent threat activity.
+            Welcome back. Here&apos;s an overview of recent threat activity.
           </p>
         </div>
 

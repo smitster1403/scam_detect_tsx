@@ -267,7 +267,7 @@ export default function ProfilePage() {
                   </ul>
                 ) : (
                   <div className="text-center py-6">
-                    <p className="text-gray-500 dark:text-gray-400">You haven't submitted any reports yet.</p>
+                    <p className="text-gray-500 dark:text-gray-400">Welcome back. Here&apos;s an overview of recent threat activity.</p>
                     <button className="mt-3 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md">
                       Report a Scam
                     </button>

@@ -98,7 +98,7 @@ export default function ReportScam() {
             Report a Scam
           </h1>
           <p className="text-gray-600 dark:text-gray-300">
-            Help others by reporting a scam you've encountered. Your information will help protect others.
+            Help others by reporting a scam you&apos;ve encountered. Your information will help protect others.
           </p>
         </div>
 
