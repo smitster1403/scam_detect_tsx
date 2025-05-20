@@ -22,7 +22,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 pt-5">
           <div className="flex flex-shrink-0 items-center px-4">
             <Link href="/" className="text-xl font-bold text-blue-600 dark:text-blue-400">
-              Scam Detect
+              ScamDetect
             </Link>
           </div>
           <div className="mt-5 flex flex-grow flex-col">
@@ -136,12 +136,14 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <div className="md:hidden">
         <div className="flex items-center justify-between bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3">
           <Link href="/" className="text-lg font-bold text-blue-600 dark:text-blue-400">
-            Scam Detect
+            ScamDetect
           </Link>
           <button
             type="button"
             onClick={toggleMobileMenu}
             className="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none"
+            title="Toggle menu"
+            aria-label="Toggle navigation menu"
           >
             <svg
               className="h-6 w-6"

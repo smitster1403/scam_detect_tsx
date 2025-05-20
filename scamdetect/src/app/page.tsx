@@ -5,6 +5,27 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-4 py-12">
+        {/* Navigation Bar */}
+        <nav className="flex justify-between items-center mb-16">
+          <Link href="/" className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+            ScamDetect
+          </Link>
+          <div className="flex gap-4">
+            <Link
+              href="/dashboard"
+              className="px-4 py-2 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-md transition-colors"
+            >
+              Dashboard
+            </Link>
+            <Link
+              href="/signup"
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-colors"
+            >
+              Sign Up
+            </Link>
+          </div>
+        </nav>
+        
         {/* Hero Section */}
         <header className="max-w-4xl mx-auto text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-400 dark:to-indigo-500">
@@ -15,13 +36,13 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/dashboard"
+              href="/signup"
               className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
             >
               Get Started
             </Link>
             <Link
-              href="/report/scam"
+              href="/public/report"
               className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors"
             >
               Report a Scam
@@ -83,12 +104,20 @@ export default function Home() {
             Start using our platform today to protect yourself and others from
             online threats.
           </p>
-          <Link
-            href="/dashboard"
-            className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors inline-block"
-          >
-            Get Started
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/signup"
+              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors inline-block"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/public/report"
+              className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors inline-block"
+            >
+              Report a Scam
+            </Link>
+          </div>
         </section>
       </div>
     </div>

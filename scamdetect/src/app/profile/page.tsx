@@ -326,7 +326,8 @@ export default function ProfilePage() {
                           name="smsNotifications"
                           checked={settings.smsNotifications}
                           onChange={handleSettingChange}
-                          className="sr-only peer" 
+                          className="sr-only peer"
+                          aria-label="SMS Notifications toggle"
                         />
                         <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                       </label>
@@ -343,7 +344,8 @@ export default function ProfilePage() {
                           name="pushNotifications"
                           checked={settings.pushNotifications}
                           onChange={handleSettingChange}
-                          className="sr-only peer" 
+                          className="sr-only peer"
+                          aria-label="Push Notifications toggle"
                         />
                         <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                       </label>
@@ -369,7 +371,8 @@ export default function ProfilePage() {
                           name="twoFactorAuth"
                           checked={settings.twoFactorAuth}
                           onChange={handleSettingChange}
-                          className="sr-only peer" 
+                          className="sr-only peer"
+                          aria-label="Two-factor Authentication toggle"
                         />
                         <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                       </label>
@@ -393,7 +396,7 @@ export default function ProfilePage() {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Data Sharing</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">Share anonymized data to improve the platform</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">Share anonymous threat data</p>
                       </div>
                       <label className="relative inline-flex items-center cursor-pointer">
                         <input 
@@ -401,7 +404,8 @@ export default function ProfilePage() {
                           name="dataSharing"
                           checked={settings.dataSharing}
                           onChange={handleSettingChange}
-                          className="sr-only peer" 
+                          className="sr-only peer"
+                          aria-label="Data Sharing toggle"
                         />
                         <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                       </label>
@@ -410,7 +414,7 @@ export default function ProfilePage() {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Dark Mode</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">Toggle dark/light theme</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">Enable dark theme</p>
                       </div>
                       <label className="relative inline-flex items-center cursor-pointer">
                         <input 
@@ -418,7 +422,8 @@ export default function ProfilePage() {
                           name="darkMode"
                           checked={settings.darkMode}
                           onChange={handleSettingChange}
-                          className="sr-only peer" 
+                          className="sr-only peer"
+                          aria-label="Dark Mode toggle"
                         />
                         <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                       </label>
