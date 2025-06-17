@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,12 +32,55 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider 
+      appearance={{
+        baseTheme: undefined,
+        variables: { colorPrimary: "#2563eb" }
+      }}
+      afterSignInUrl="/dashboard"
+      afterSignUpUrl="/dashboard"
+    >
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <header className="flex justify-between items-center p-4 gap-4 h-16 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+          <Link 
+            href="/" 
+            className="text-xl font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+          >
+            ScamDetect
+          </Link>
+          
+          <div className="flex items-center gap-4">
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton 
+                afterSignOutUrl="/"
+                appearance={{
+                  elements: {
+                    avatarBox: "w-10 h-10"
+                  }
+                }}
+                showName
+              />
+            </SignedIn>
+          </div>
+        </header>
         {children}
       </body>
     </html>
+    </ClerkProvider>
   );
 }
