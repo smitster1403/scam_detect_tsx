@@ -1,7 +1,7 @@
 "use client";
 
-import { useSignIn, useSignUp } from "@clerk/nextjs";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface OAuthButtonProps {
   strategy: "oauth_google" | "oauth_github" | "oauth_facebook";
@@ -14,24 +14,19 @@ export default function CustomOAuthButton({
   strategy, 
   children, 
   className = "",
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   mode = "signin" 
 }: OAuthButtonProps) {
-  const { signIn } = useSignIn();
-  const { signUp } = useSignUp();
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleOAuthSignIn = async () => {
-    if (!signIn || !signUp) return;
-    
     setIsLoading(true);
     
     try {
-      const authMethod = mode === "signin" ? signIn : signUp;
-      await authMethod.authenticateWithRedirect({
-        strategy,
-        redirectUrl: "/sso-callback",
-        redirectUrlComplete: "/dashboard"
-      });
+        console.log(`Mocking ${strategy} auth...`);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        router.push("/dashboard");
     } catch (error) {
       console.error("OAuth error:", error);
       setIsLoading(false);

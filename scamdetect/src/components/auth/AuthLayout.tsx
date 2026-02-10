@@ -31,6 +31,8 @@ export default function AuthLayout({
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
           {subtitle}{" "}
+          <br />
+          {linkLabel}{" "}
           <Link 
             href={linkHref} 
             className="font-medium text-blue-600 dark:text-blue-400 hover:underline"

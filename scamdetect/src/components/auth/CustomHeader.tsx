@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useUser, useClerk } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 export default function CustomHeader() {
-  const { isSignedIn, user } = useUser();
-  const { signOut } = useClerk();
+  const isSignedIn = true; // Mock signed in state
+  const router = useRouter();
 
   const handleSignOut = () => {
-    signOut();
+    // Mock signOut
+    router.push("/");
   };
 
   return (
@@ -37,7 +38,7 @@ export default function CustomHeader() {
         ) : (
           <div className="flex items-center gap-4">
             <span className="text-sm text-gray-600 dark:text-gray-300">
-              Welcome, {user?.firstName || user?.emailAddresses[0]?.emailAddress}
+              Welcome, User
             </span>
             <div className="flex items-center gap-2">
               <Link href="/dashboard">

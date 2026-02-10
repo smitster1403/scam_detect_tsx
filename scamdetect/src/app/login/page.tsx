@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSignIn } from "@clerk/nextjs";
 import AuthLayout from "@/components/auth/AuthLayout";
 import AuthInput from "@/components/auth/AuthInput";
 import AuthButton from "@/components/auth/AuthButton";
@@ -11,7 +10,6 @@ import ErrorAlert from "@/components/auth/ErrorAlert";
 import CustomOAuthButton from "@/components/auth/CustomOAuthButton";
 
 export default function Login() {
-  const { isLoaded, signIn, setActive } = useSignIn();
   const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
@@ -32,8 +30,6 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!isLoaded) return;
-    
     setError("");
     
     if (!formData.email || !formData.password) {
@@ -44,20 +40,11 @@ export default function Login() {
     setIsSubmitting(true);
     
     try {
-      const result = await signIn.create({
-        identifier: formData.email,
-        password: formData.password,
-      });
-
-      if (result.status === "complete") {
-        await setActive({ session: result.createdSessionId });
-        router.push('/dashboard');
-      } else {
-        // Handle other statuses if needed (like 2FA)
-        console.log("Sign-in not complete:", result);
-      }
-    } catch (err: any) {
-      setError(err.errors?.[0]?.message || "Failed to sign in. Please try again.");
+      // Mock sign in
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      router.push('/dashboard');
+    } catch {
+      setError("Failed to sign in. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

@@ -2,27 +2,18 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation"; 
-import { useClerk } from "@clerk/nextjs";
 
 export default function SSOCallback() {
-  const { handleRedirectCallback } = useClerk();
   const router = useRouter();
 
   useEffect(() => {
-    const handleCallback = async () => {
-      try {
-        await handleRedirectCallback();
-        // Redirect to dashboard after successful authentication
+    // Mock callback handling
+    const timer = setTimeout(() => {
         router.push('/dashboard');
-      } catch (error) {
-        console.error('Error handling OAuth callback:', error);
-        // Redirect to login on error
-        router.push('/login?error=oauth_error');
-      }
-    };
+    }, 1000);
 
-    handleCallback();
-  }, [handleRedirectCallback, router]);
+    return () => clearTimeout(timer);
+  }, [router]);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8">

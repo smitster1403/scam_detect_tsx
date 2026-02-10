@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSignUp } from "@clerk/nextjs";
 import AuthLayout from "@/components/auth/AuthLayout";
 import AuthInput from "@/components/auth/AuthInput";
 import AuthButton from "@/components/auth/AuthButton";
@@ -11,7 +10,6 @@ import ErrorAlert from "@/components/auth/ErrorAlert";
 import CustomOAuthButton from "@/components/auth/CustomOAuthButton";
 
 export default function SignUp() {
-  const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
   const [formData, setFormData] = useState({
     fullName: "",
@@ -22,7 +20,7 @@ export default function SignUp() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<{[key: string]: string}>({});
-  const [pendingVerification, setPendingVerification] = useState(false);
+  const [pendingVerification] = useState(false);
   const [code, setCode] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,8 +65,6 @@ export default function SignUp() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!isLoaded) return;
-    
     if (!validateForm()) {
       return;
     }
@@ -77,25 +73,13 @@ export default function SignUp() {
     setErrors({});
     
     try {
-      const result = await signUp.create({
-        emailAddress: formData.email,
-        password: formData.password,
-        firstName: formData.fullName.split(' ')[0],
-        lastName: formData.fullName.split(' ').slice(1).join(' ') || '',
-      });
-
-      // Send email verification code
-      if (result.status === "missing_requirements") {
-        await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
-        setPendingVerification(true);
-      } else if (result.status === "complete") {
-        // If sign up is complete (no verification needed)
-        await setActive({ session: result.createdSessionId });
-        router.push('/dashboard');
-      }
-    } catch (err: any) {
+      // Mock signup
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      router.push('/dashboard');
+    } catch (err: unknown) {
       console.error("Signup error:", err);
-      const errorMessage = err.errors?.[0]?.message || "Failed to create account. Please try again.";
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const errorMessage = (err as any).message || "Failed to create account. Please try again.";
       setErrors({ general: errorMessage });
     } finally {
       setIsSubmitting(false);
@@ -104,30 +88,7 @@ export default function SignUp() {
 
   const onPressVerify = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!isLoaded) return;
-    
-    setIsSubmitting(true);
-    
-    try {
-      const completeSignUp = await signUp.attemptEmailAddressVerification({
-        code,
-      });
-      
-      if (completeSignUp.status !== "complete") {
-        console.log(JSON.stringify(completeSignUp, null, 2));
-      }
-      
-      if (completeSignUp.status === "complete") {
-        await setActive({ session: completeSignUp.createdSessionId });
-        router.push('/dashboard');
-      }
-    } catch (err: any) {
-      const errorMessage = err.errors?.[0]?.message || "Invalid verification code.";
-      setErrors({ verification: errorMessage });
-    } finally {
-      setIsSubmitting(false);
-    }
+    // This is unreachable in mock but kept for structure if needed
   };
 
   return (
@@ -259,7 +220,7 @@ export default function SignUp() {
             Verify your email
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-            We've sent a verification code to your email address. Please enter it below.
+            We&apos;ve sent a verification code to your email address. Please enter it below.
           </p>
           
           <ErrorAlert message={errors.verification} />
